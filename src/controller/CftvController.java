@@ -1,5 +1,5 @@
 package controller;
-package br.com.caelum.goodbuy.controller;
+
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
@@ -12,8 +12,8 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.caelum.vraptor.validator.Validations;
-import dao.UsuarioDao;
-import modelo.Usuario;
+import dao.CftvDao;
+import modelo.Cftv;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -40,7 +40,7 @@ import modelo.Usuario;
 @Resource
 public class CftvController{
 	
-	private UsuarioDao dao;
+	private CftvDao dao;
 	private Result result;
 	private Validator validator;
 	

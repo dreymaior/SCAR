@@ -7,11 +7,10 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import infra.SessionCreate;
-import modelo.Usuario;
+import modelo.Cftv;
 import br.com.caelum.vraptor.ioc.Component;
 
 @Component
-
 public class CftvDao {
 
 	private final Session session;
@@ -20,8 +19,7 @@ public class CftvDao {
 		this.session = session;
 	}
 	
-	
 	public List<Cftv> listaTudo() {
-		return this.session.createCriteria(Cfvt.class).list();
+		return this.session.createCriteria(Cftv.class).list();
 	}
 }
