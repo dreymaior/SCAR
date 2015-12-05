@@ -460,7 +460,7 @@ footer {
 </head>
 
 <body>
-    <header>
+	<header>
       <h1 class="float-l">
         <a href="/SCAR" title="Titulo do Site">SCAR</a>
       </h1>
@@ -492,22 +492,34 @@ footer {
         </ul>
       </nav>
     </header>
-    
-    <section id="Home">
-      <br/>
-      <br/>
-      <br/>
-      <p>
-      	Funcionalidade ainda não implementada.
-      </p>
-    </section>
-    
-    <footer>
+
+	<br/>
+    <br/>
+    <br/>
+
+
+	<table>
+		<thead>
+			<tr>
+				<th>Nome</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${cftvList}" var="cftv">
+				<tr>
+					<td>${cftv.nome}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
+	<footer>
     	<li>
     		<br />
     		<h6>		Todos os direitos reservados</h6>
     	</li>
     </footer>
-
+	
 </body>
 </html>
