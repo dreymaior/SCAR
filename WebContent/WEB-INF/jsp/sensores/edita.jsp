@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SCAR</title>
-
+<title>Editar</title>
 <style>
 @CHARSET "UTF-8";
 html, body, div, span, applet, object, iframe,
@@ -458,9 +458,8 @@ footer {
 
 </style>
 </head>
-
 <body>
-    <header>
+<header>
       <h1 class="float-l">
         <a href="/SCAR" title="Titulo do Site">SCAR</a>
       </h1>
@@ -472,37 +471,54 @@ footer {
       <nav class="float-r">
         <ul class="list-auto">
           <li>
-          	<a href="/SCAR/">Home</a>
+          	<a href="<c:url value="/"/>" title="Home">Home</a>
           </li>
           <li>
-            <a href="usuarios">Usuários</a>
+            <a href="<c:url value="/usuarios"/>" title="Usuarios">Usuários</a>
           </li>
           <li>
-            <a href="sensores">Sensores</a>
+            <a href="<c:url value="/sensores"/>" title="Sensores">Sensores</a>
           </li>
           <li>
-            <a href="estrutura">Estrutura</a>
+            <a href="<c:url value="/estrutura"/>" title="Estrutura">Estrutura</a>
           </li>
           <li>
-            <a href="cftv">CFTV</a>
+            <a href="<c:url value="/cftv"/> title="Cftv">CFTV</a>
           </li>
           <li>
-            <a href="log">Log</a>
+            <a href="<c:url value="/log"/>" title="Log">Log</a>
           </li>
         </ul>
       </nav>
     </header>
     
-    <section id="Home">
-      <br/>
-      <br/>
-      <br/>
-      <p>
-      	Funcionalidade ainda não implementada.
-      </p>
-    </section>
-    
-    <footer>
+    <br/>
+    <br/>
+    <br/>
+
+<ul>
+	<c:forEach items="${errors}" var="error">
+		<li>${error.category } - ${error.message }</li>
+	</c:forEach>
+</ul>
+
+	<!-- <form action="altera">  -->
+	<form action="<c:url value="/sensores/${sensor.id }"/>" method="POST">
+		<fieldset>
+			<legend>Editar Produto</legend>
+			<input type="hidden" name="sensor.id" value="${sensor.id }" />
+			
+			<label for="nome">Nome:</label>			
+			<input id="nome" type="text" name="sensor.nome" value="${sensor.nome }"/>
+			
+			<label for="tipo">Tipo:</label>
+			<input id="tipo" type="text" name="sensor.tipo" value="${sensor.tipo }"/>
+	
+			<button type="submit" name="_method" value="PUT">Enviar</button>
+		</fieldset>
+	</form>
+	
+	<footer>
     	<li>
     		<br />
     		<h6>		Todos os direitos reservados</h6>
