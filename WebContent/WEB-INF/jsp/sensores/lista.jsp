@@ -1,11 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SCAR</title>
-
+<style type="text/css">
+.link {
+	text-decoration: underline;
+	border: none;
+	background: none;
+	color: blue;
+	cursor: pointer;
+}
+</style>
 <style>
 @CHARSET "UTF-8";
 html, body, div, span, applet, object, iframe,
@@ -455,12 +463,11 @@ footer {
   background: #ECECEC;
   z-index: 2;
 }
-
 </style>
+<title>Listagem de Sensores</title>
 </head>
-
 <body>
-    <header>
+<header>
       <h1 class="float-l">
         <a href="/SCAR" title="Titulo do Site">SCAR</a>
       </h1>
@@ -492,22 +499,35 @@ footer {
         </ul>
       </nav>
     </header>
+
+	<br/>
+    <br/>
+    <br/>
     
-    <section id="Home">
-      <br/>
-      <br/>
-      <br/>
-      <p>
-      	Funcionalidade ainda não implementada.
-      </p>
-    </section>
-    
-    <footer>
-    	<li>
-    		<br />
-    		<h6>		Todos os direitos reservados</h6>
-    	</li>
-    </footer>
+    <td><a href="<c:url value="/sensores/novo"/>">Novo Sensor</a></td>    
+    <table>
+    	<thead>
+    		<tr>
+    			<th>Nome</th>
+    			<th>Tipo</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<c:forEach items="${sensorList}" var="sensor">
+    			<tr>
+    				<td>${sensor.nome}</td>
+    				<td>${sensor.tipo}</td>
+    				<td><a href="<c:url value="/sensores/${sensor.id}"/>">Editar</a></td>
+    				<!-- <td><a href="remove?id=${sensor.id}">Remover</a></td>  -->
+    				<td>
+    					<form action="<c:url value="/sensores/${sensor.id}"/>" method="POST">
+    						<button class="link" name="_method" value="DELETE">Remover</button>
+    					</form>
+    				</td>
+    			</tr>
+    		</c:forEach>
+    	</tbody>
+    </table>
 
 </body>
 </html>
