@@ -107,4 +107,11 @@ public class UsuariosController {
 	public void formulario(){
 	}
 	
+	@Path("/busca")
+	@Get
+	public List<Usuario> busca(String nome){
+		result.include("nome", nome);
+		result.include("login", nome);
+		return dao.busca(nome);
+	}
 }

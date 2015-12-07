@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import modelo.Sensor;
+import modelo.Usuario;
 
 @Component
 public class SensorDao {
@@ -41,6 +44,11 @@ public class SensorDao {
 	
 	public List<Sensor> listaTudo() {
 		return this.session.createCriteria(Sensor.class).list();
+	}
+
+	public List<Sensor> busca1(String nome) {
+		
+		return session.createCriteria(Sensor.class).add(Restrictions.ilike("nome",nome, MatchMode.ANYWHERE)).list();
 	}
 	
 }
