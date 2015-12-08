@@ -5,7 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Formulario</title>
+<style type="text/css">
+.link {
+	text-decoration: underline;
+	border: none;
+	background: none;
+	color: blue;
+	cursor: pointer;
+}
+</style>
 <style>
 @CHARSET "UTF-8";
 html, body, div, span, applet, object, iframe,
@@ -455,11 +463,10 @@ footer {
   background: #ECECEC;
   z-index: 2;
 }
-
 </style>
+<title>Listagem de Sensores</title>
 </head>
 <body>
-
 <header>
       <h1 class="float-l">
         <a href="/SCAR" title="Titulo do Site">SCAR</a>
@@ -472,22 +479,22 @@ footer {
       <nav class="float-r">
         <ul class="list-auto">
           <li>
-          	<a href="<c:url value="/"/>" title="Home">Home</a>
+          	<a href="/SCAR/">Home</a>
           </li>
           <li>
-            <a href="<c:url value="/usuarios"/>" title="Usuarios">Usuários</a>
+            <a href="usuarios">Usuários</a>
           </li>
           <li>
-            <a href="<c:url value="/sensor"/>" title="Sensores">Sensores</a>
+            <a href="sensor">Sensores</a>
           </li>
           <li>
-            <a href="<c:url value="/estrutura"/>" title="Estrutura">Estrutura</a>
+            <a href="estrutura">Estrutura</a>
           </li>
           <li>
-            <a href="<c:url value="/cftv"/> title="Cftv">CFTV</a>
+            <a href="cftv">CFTV</a>
           </li>
           <li>
-            <a href="<c:url value="/log"/>" title="Log">Log</a>
+            <a href="log">Log</a>
           </li>
           <li>
             <a href="/admin/sensores">Admin / Sensores</a>
@@ -495,60 +502,35 @@ footer {
         </ul>
       </nav>
     </header>
+
+	<br/>
+    <br/>
+    <br/>
     
-    <br/>
-    <br/>
-    <br/>
+    <td><a href="<c:url value="/sensor/novo"/>">Novo Sensor</a></td>    
+    <table>
+    	<thead>
+    		<tr>
+    			<th>Nome</th>
+    			<th>Tipo</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<c:forEach items="${sensorList}" var="sensor">
+    			<tr>
+    				<td>${sensor.nome}</td>
+    				<td>${sensor.tipo}</td>
+    				<td><a href="<c:url value="/sensor/${sensor.id}"/>">Editar</a></td>
+    				<!-- <td><a href="remove?id=${sensor.id}">Remover</a></td>  -->
+    				<td>
+    					<form action="<c:url value="/sensor/${sensor.id}"/>" method="POST">
+    						<button class="link" name="_method" value="DELETE">Remover</button>
+    					</form>
+    				</td>
+    			</tr>
+    		</c:forEach>
+    	</tbody>
+    </table>
 
-<ul>
-	<c:forEach items="${errors}" var="error">
-		<li>${error.category } - ${error.message }</li>
-	</c:forEach>
-</ul>
-
-<!-- <form action="adiciona"> -->
-<form action="<c:url value="/usuarios"/>" method="POST">
-	<fieldset>
-		<legend>Adicionar Usuário</legend>
-		
-		<label for="nome">Nome:</label>
-		<input id="nome" class="required" 
-			type="text" name="usuario.nome" value="${usuario.nome}" />*<br />
-		
-		<label for="sobrenome">Sobrenome:</label>
-		<input id="sobrenome" class="required" 
-			type="text" name="usuario.sobrenome" value="${usuario.sobrenome}" />*<br />
-			
-		<label for="login">Login:</label>
-		<input id="login" class="required"
-			type="text" name="usuario.login" value="${usuario.login}" />*<br />
-			
-		<label for="password">Senha:</label>
-		<input id="password" class="required"
-			type="password" name="usuario.password"/>*<br />
-			
-		<label for="confirmacao">Confirme a senha:</label>
-		<input id="confirmacao" equalTo="#password" type="password" />*<br />
-		
-		<label for="cpfCnpj">CPF/CNPJ:</label>
-		<input id="cpfCnpj" class="required" 
-			type="text" name="usuario.cpfCnpj" value="${usuario.cpfCnpj}" />*<br />
-		
-		<label for="telefone">Telefone:</label>
-		<input id="telefone" type="text" name="usuario.telefone" value="${usuario.telefone}" />*<br />
-		
-		<label for="endereco">Endereço:</label>
-		<input id="endereco" type="text" name="usuario.endereco" value="${usuario.endereco}"/>*<br />
-		* Campo obrigatório<br/>
-		<button type="submit">Enviar</button>		
-	</fieldset>
-</form>
-
-    <footer>
-    	<li>
-    		<br />
-    		<h6>		Todos os direitos reservados</h6>
-    	</li>
-    </footer>
-
+</body>
 </html>

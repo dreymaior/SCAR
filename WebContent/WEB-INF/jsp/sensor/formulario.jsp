@@ -459,7 +459,6 @@ footer {
 </style>
 </head>
 <body>
-
 <header>
       <h1 class="float-l">
         <a href="/SCAR" title="Titulo do Site">SCAR</a>
@@ -499,56 +498,27 @@ footer {
     <br/>
     <br/>
     <br/>
-
+    
 <ul>
 	<c:forEach items="${errors}" var="error">
 		<li>${error.category } - ${error.message }</li>
 	</c:forEach>
 </ul>
 
-<!-- <form action="adiciona"> -->
-<form action="<c:url value="/usuarios"/>" method="POST">
+<!-- <form action="adiciona">  -->
+<form action="<c:url value="/sensores"/>" method="POST">
 	<fieldset>
-		<legend>Adicionar Usuário</legend>
+		<legend>Adicionar Sensor</legend>
 		
 		<label for="nome">Nome:</label>
-		<input id="nome" class="required" 
-			type="text" name="usuario.nome" value="${usuario.nome}" />*<br />
+		<input id="nome" type="text" name="sensor.nome" />
 		
-		<label for="sobrenome">Sobrenome:</label>
-		<input id="sobrenome" class="required" 
-			type="text" name="usuario.sobrenome" value="${usuario.sobrenome}" />*<br />
-			
-		<label for="login">Login:</label>
-		<input id="login" class="required"
-			type="text" name="usuario.login" value="${usuario.login}" />*<br />
-			
-		<label for="password">Senha:</label>
-		<input id="password" class="required"
-			type="password" name="usuario.password"/>*<br />
-			
-		<label for="confirmacao">Confirme a senha:</label>
-		<input id="confirmacao" equalTo="#password" type="password" />*<br />
+		<label for="tipo">Tipo:</label>
+		<input id="tipo" type="text" name="sensor.tipo" />
 		
-		<label for="cpfCnpj">CPF/CNPJ:</label>
-		<input id="cpfCnpj" class="required" 
-			type="text" name="usuario.cpfCnpj" value="${usuario.cpfCnpj}" />*<br />
-		
-		<label for="telefone">Telefone:</label>
-		<input id="telefone" type="text" name="usuario.telefone" value="${usuario.telefone}" />*<br />
-		
-		<label for="endereco">Endereço:</label>
-		<input id="endereco" type="text" name="usuario.endereco" value="${usuario.endereco}"/>*<br />
-		* Campo obrigatório<br/>
-		<button type="submit">Enviar</button>		
+		<button type="submit">Enviar</button>
 	</fieldset>
 </form>
-
-    <footer>
-    	<li>
-    		<br />
-    		<h6>		Todos os direitos reservados</h6>
-    	</li>
-    </footer>
-
+    
+</body>
 </html>
