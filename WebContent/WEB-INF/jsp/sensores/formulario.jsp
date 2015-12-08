@@ -471,22 +471,25 @@ footer {
       <nav class="float-r">
         <ul class="list-auto">
           <li>
-          	<a href="<c:url value="/"/>" title="Home">Home</a>
+          	<a href="/SCAR/"/>Home</a>
           </li>
           <li>
-            <a href="<c:url value="/usuarios"/>" title="Usuarios">Usuários</a>
+            <a href="/SCAR/usuarios"/>Usuários</a>
           </li>
           <li>
-            <a href="<c:url value="/sensores"/>" title="Sensores">Sensores</a>
+            <a href="/SCAR/sensor"/>Sensores</a>
           </li>
           <li>
-            <a href="<c:url value="/estrutura"/>" title="Estrutura">Estrutura</a>
+            <a href="<c:url value="estrutura"/>" title="Estrutura">Estrutura</a>
           </li>
           <li>
-            <a href="<c:url value="/cftv"/> title="Cftv">CFTV</a>
+            <a href="<c:url value="cftv"/> title="Cftv">CFTV</a>
           </li>
           <li>
-            <a href="<c:url value="/log"/>" title="Log">Log</a>
+            <a href="<c:url value="log"/>" title="Log">Log</a>
+          </li>
+          <li>
+            <a href="/admin/sensores">Admin / Sensores</a>
           </li>
         </ul>
       </nav>
@@ -503,7 +506,7 @@ footer {
 </ul>
 
 <!-- <form action="adiciona">  -->
-<form action="<c:url value="/sensores"/>" method="POST">
+<form action="<c:url value="/admin/sensores"/>" method="PUT">
 	<fieldset>
 		<legend>Adicionar Sensor</legend>
 		
