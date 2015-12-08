@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Editar</title>
+<title>Formulario</title>
 <style>
 @CHARSET "UTF-8";
 html, body, div, span, applet, object, iframe,
@@ -477,7 +477,7 @@ footer {
             <a href="<c:url value="/usuarios"/>" title="Usuarios">Usuários</a>
           </li>
           <li>
-            <a href="<c:url value="/sensores"/>" title="Sensores">Sensores</a>
+            <a href="<c:url value="/sensor"/>" title="Sensores">Sensores</a>
           </li>
           <li>
             <a href="<c:url value="/estrutura"/>" title="Estrutura">Estrutura</a>
@@ -488,6 +488,9 @@ footer {
           <li>
             <a href="<c:url value="/log"/>" title="Log">Log</a>
           </li>
+          <li>
+            <a href="/admin/sensores">Admin / Sensores</a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -495,35 +498,27 @@ footer {
     <br/>
     <br/>
     <br/>
-
+    
 <ul>
 	<c:forEach items="${errors}" var="error">
 		<li>${error.category } - ${error.message }</li>
 	</c:forEach>
 </ul>
 
-	<!-- <form action="altera">  -->
-	<form action="<c:url value="/sensores/${sensor.id }"/>" method="POST">
-		<fieldset>
-			<legend>Editar Produto</legend>
-			<input type="hidden" name="sensor.id" value="${sensor.id }" />
-			
-			<label for="nome">Nome:</label>			
-			<input id="nome" type="text" name="sensor.nome" value="${sensor.nome }"/>
-			
-			<label for="tipo">Tipo:</label>
-			<input id="tipo" type="text" name="sensor.tipo" value="${sensor.tipo }"/>
-	
-			<button type="submit" name="_method" value="PUT">Enviar</button>
-		</fieldset>
-	</form>
-	
-	<footer>
-    	<li>
-    		<br />
-    		<h6>		Todos os direitos reservados</h6>
-    	</li>
-    </footer>
-
+<!-- <form action="adiciona">  -->
+<form action="<c:url value="/sensores"/>" method="POST">
+	<fieldset>
+		<legend>Adicionar Sensor</legend>
+		
+		<label for="nome">Nome:</label>
+		<input id="nome" type="text" name="sensor.nome" />
+		
+		<label for="tipo">Tipo:</label>
+		<input id="tipo" type="text" name="sensor.tipo" />
+		
+		<button type="submit">Enviar</button>
+	</fieldset>
+</form>
+    
 </body>
 </html>

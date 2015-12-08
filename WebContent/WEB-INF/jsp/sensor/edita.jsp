@@ -5,15 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style type="text/css">
-.link {
-	text-decoration: underline;
-	border: none;
-	background: none;
-	color: blue;
-	cursor: pointer;
-}
-</style>
+<title>Editar</title>
 <style>
 @CHARSET "UTF-8";
 html, body, div, span, applet, object, iframe,
@@ -463,8 +455,8 @@ footer {
   background: #ECECEC;
   z-index: 2;
 }
+
 </style>
-<title>Listagem de Sensores</title>
 </head>
 <body>
 <header>
@@ -479,22 +471,22 @@ footer {
       <nav class="float-r">
         <ul class="list-auto">
           <li>
-          	<a href="/SCAR/">Home</a>
+          	<a href="<c:url value="/"/>" title="Home">Home</a>
           </li>
           <li>
-            <a href="usuarios">Usuários</a>
+            <a href="<c:url value="/usuarios"/>" title="Usuarios">Usuários</a>
           </li>
           <li>
-            <a href="sensor">Sensores</a>
+            <a href="<c:url value="/sensor"/>" title="Sensores">Sensores</a>
           </li>
           <li>
-            <a href="estrutura">Estrutura</a>
+            <a href="<c:url value="/estrutura"/>" title="Estrutura">Estrutura</a>
           </li>
           <li>
-            <a href="cftv">CFTV</a>
+            <a href="<c:url value="/cftv"/> title="Cftv">CFTV</a>
           </li>
           <li>
-            <a href="log">Log</a>
+            <a href="<c:url value="/log"/>" title="Log">Log</a>
           </li>
           <li>
             <a href="/admin/sensores">Admin / Sensores</a>
@@ -502,37 +494,39 @@ footer {
         </ul>
       </nav>
     </header>
-
-	<br/>
-    <br/>
-    <br/>
     
-    <td><a href="<c:url value="/admin/sensores/novo"/>">Novo Sensor</a></td>    
-    <table>
-    	<thead>
-    		<tr>
-    			<th>Modelo</th>
-    			<th>Descrição</th>
-    			<th>Tipo</th>
-    		</tr>
-    	</thead>
-    	<tbody>
-    		<c:forEach items="${sensoresList}" var="sensores">
-    			<tr>
-    				<td>${sensores.modelo}</td>
-    				<td>${sensores.descricao}</td>
-    				<td>${sensores.tipo}</td>
-    				<td><a href="<c:url value="/admin/sensores/${sensores.modelo}"/>">Editar</a></td>
-    				<!-- <td><a href="remove?id=${sensor.id}">Remover</a></td>  -->
-    				<td>
-    					<form action="<c:url value="/admin/sensores/${sensores.modelo}"/>" method="POST">
-    						<button class="link" name="_method" value="DELETE">Remover</button>
-    					</form>
-    				</td>
-    			</tr>
-    		</c:forEach>
-    	</tbody>
-    </table>
+    <br/>
+    <br/>
+    <br/>
+
+<ul>
+	<c:forEach items="${errors}" var="error">
+		<li>${error.category } - ${error.message }</li>
+	</c:forEach>
+</ul>
+
+	<!-- <form action="altera">  -->
+	<form action="<c:url value="/sensores/${sensor.id }"/>" method="POST">
+		<fieldset>
+			<legend>Editar Produto</legend>
+			<input type="hidden" name="sensor.id" value="${sensor.id }" />
+			
+			<label for="nome">Nome:</label>			
+			<input id="nome" type="text" name="sensor.nome" value="${sensor.nome }"/>
+			
+			<label for="tipo">Tipo:</label>
+			<input id="tipo" type="text" name="sensor.tipo" value="${sensor.tipo }"/>
+	
+			<button type="submit" name="_method" value="PUT">Enviar</button>
+		</fieldset>
+	</form>
+	
+	<footer>
+    	<li>
+    		<br />
+    		<h6>		Todos os direitos reservados</h6>
+    	</li>
+    </footer>
 
 </body>
 </html>

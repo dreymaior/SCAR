@@ -478,7 +478,7 @@ footer {
             <a href="usuarios">Usuários</a>
           </li>
           <li>
-            <a href="sensores">Sensores</a>
+            <a href="sensor">Sensores</a>
           </li>
           <li>
             <a href="estrutura">Estrutura</a>
@@ -488,6 +488,9 @@ footer {
           </li>
           <li>
             <a href="log">Log</a>
+          </li>
+          <li>
+            <a href="/admin/sensores">Admin / Sensores</a>
           </li>
         </ul>
       </nav>

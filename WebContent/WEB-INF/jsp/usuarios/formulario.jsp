@@ -478,7 +478,7 @@ footer {
             <a href="<c:url value="/usuarios"/>" title="Usuarios">Usuários</a>
           </li>
           <li>
-            <a href="<c:url value="/sensores"/>" title="Sensores">Sensores</a>
+            <a href="<c:url value="/sensor"/>" title="Sensores">Sensores</a>
           </li>
           <li>
             <a href="<c:url value="/estrutura"/>" title="Estrutura">Estrutura</a>
@@ -488,6 +488,9 @@ footer {
           </li>
           <li>
             <a href="<c:url value="/log"/>" title="Log">Log</a>
+          </li>
+          <li>
+            <a href="/admin/sensores">Admin / Sensores</a>
           </li>
         </ul>
       </nav>

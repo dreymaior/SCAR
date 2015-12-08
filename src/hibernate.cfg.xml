@@ -19,6 +19,7 @@
 		<!-- Entidades -->
 		<mapping class="modelo.Usuario" />
 		<mapping class="modelo.Sensor" />
+		<mapping class="modelo.Sensores" />
 		
 	</session-factory>
 </hibernate-configuration>
