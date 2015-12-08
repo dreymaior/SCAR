@@ -507,7 +507,7 @@ footer {
 </ul>
 
 <!-- <form action="adiciona"> -->
-<form action="<c:url value="/usuarios"/>" method="POST">
+<form name="adicionar" onsubmit="validor()" action="<c:url value="/usuarios"/>" method="POST">
 	<fieldset>
 		<legend>Adicionar Usuário</legend>
 		
@@ -528,7 +528,7 @@ footer {
 			type="password" name="usuario.password"/>*<br />
 			
 		<label for="confirmacao">Confirme a senha:</label>
-		<input id="confirmacao" equalTo="#password" type="password" />*<br />
+		<input id="confirmacao" name="confirmar" type="password" />*<br />
 		
 		<label for="cpfCnpj">CPF/CNPJ:</label>
 		<input id="cpfCnpj" class="required" 
@@ -543,7 +543,17 @@ footer {
 		<button type="submit">Enviar</button>		
 	</fieldset>
 </form>
-
+<script>
+	function validor(){
+		if (document.adicionar.usuario.password == document.adicionar.confirmar){
+			return true;
+		}
+		else{
+			alert("Senha nao conferem.");
+			return false;
+		}
+	}
+</script> 
     <footer>
     	<li>
     		<br />
