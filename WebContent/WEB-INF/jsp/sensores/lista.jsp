@@ -507,7 +507,7 @@ footer {
     <br/>
     <br/>
     
-    <td><a href="<c:url value="/admin/sensores/novo"/>">Novo Sensor</a></td>    
+    <td><a href="<c:url value="/admin/sensores/novo"/>">Novo Sensor</a></td>
     <table>
     	<thead>
     		<tr>

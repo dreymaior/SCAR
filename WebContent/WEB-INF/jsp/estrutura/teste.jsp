@@ -34,6 +34,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
   text-shadow: 0 1px 0 #fff;
+
+  
 }
 
 header {
@@ -459,7 +461,7 @@ footer {
 </style>
 </head>
 
-<body>
+<body bgcolor="#E6E6FA">
     <header>
       <h1 class="float-l">
         <a href="/SCAR" title="Titulo do Site">SCAR</a>
@@ -500,14 +502,15 @@ footer {
       <br/>
       <br/>
       <br/>
+      
       <p>
-      	Funcionalidade ainda não implementada.
+      	Funcionalidade ainda não implemijhentada.
       </p>
     </section>
     
     <footer>
     	<li>
-    		<br />
+    		<br/>
     		<h6>		Todos os direitos reservados</h6>
     	</li>
     </footer>
