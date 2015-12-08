@@ -19,7 +19,11 @@
 		<!-- Entidades -->
 		<mapping class="modelo.Usuario" />
 		<mapping class="modelo.Sensor" />
+<<<<<<< HEAD
+		<mapping class="modelo.Cftv" />
+=======
 		<mapping class="modelo.Sensores" />
 		
+>>>>>>> master
 	</session-factory>
 </hibernate-configuration>

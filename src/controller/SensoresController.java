@@ -9,8 +9,14 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+<<<<<<< HEAD
+import dao.SensorDao;
+import modelo.Sensor;
+import modelo.Usuario;
+=======
 import dao.SensoresDao;
 import modelo.Sensores;
+>>>>>>> master
 
 @Resource
 public class SensoresController {
@@ -48,5 +54,13 @@ public class SensoresController {
 	
 	@Get @Path("/admin/sensores/novo")
 	public void formulario(){
+	}
+	
+	@Path("/busca1")
+	@Get
+	public List<Sensor> busca1(String nome){
+		result.include("nome", nome);
+		result.include("tipo", nome);
+		return dao.busca1(nome);
 	}
 }

@@ -507,7 +507,8 @@ footer {
     <br/>
     <br/>
     
-    <td><a href="<c:url value="/sensor/novo"/>">Novo Sensor</a></td>    
+    <td><a href="<c:url value="/sensores/novo"/>">Novo Sensor</a></td>    
+    <td><a href="<c:url value="/busca1"/>">Busca Sensor</a></td>    
     <table>
     	<thead>
     		<tr>
@@ -520,7 +521,7 @@ footer {
     			<tr>
     				<td>${sensor.nome}</td>
     				<td>${sensor.tipo}</td>
-    				<td><a href="<c:url value="/sensor/${sensor.id}"/>">Editar</a></td>
+    				<td><a href="<c:url value="/sensores/${sensor.id}"/>">Editar</a></td>
     				<!-- <td><a href="remove?id=${sensor.id}">Remover</a></td>  -->
     				<td>
     					<form action="<c:url value="/sensor/${sensor.id}"/>" method="POST">

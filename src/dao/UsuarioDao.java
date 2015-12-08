@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import infra.SessionCreate;
@@ -50,6 +51,11 @@ public class UsuarioDao {
 	
 	public List<Usuario> listaTudo() {
 		return this.session.createCriteria(Usuario.class).list();
+	}
+
+	public List<Usuario> busca(String nome) {
+		
+		return session.createCriteria(Usuario.class).add(Restrictions.ilike("nome",nome, MatchMode.ANYWHERE)).list();
 	}
 
 }
