@@ -29,43 +29,94 @@ public class UsuariosController {
 		this.validator = validator;
 	}
 	
+	static public boolean isValidCpf (String strCpf )
+	   {
+	      int     d1, d2;
+	      int     digito1, digito2, resto;
+	      int     digitoCPF;
+	      String  nDigResult;
+	      	      
+	      d1 = d2 = 0;
+	      digito1 = digito2 = resto = 0;
+
+	      for (int nCount = 1; nCount < strCpf.length() -1; nCount++)
+	      {
+	         digitoCPF = Integer.valueOf (strCpf.substring(nCount -1, nCount)).intValue();
+
+	         //multiplique a ultima casa por 2 a seguinte por 3 a seguinte por 4 e assim por diante.
+	         d1 = d1 + ( 11 - nCount ) * digitoCPF;
+
+	         //para o segundo digito repita o procedimento incluindo o primeiro digito calculado no passo anterior.
+	         d2 = d2 + ( 12 - nCount ) * digitoCPF;
+	      };
+
+	      //Primeiro resto da divisão por 11.
+	      resto = (d1 % 11);
+
+	      //Se o resultado for 0 ou 1 o digito é 0 caso contrário o digito é 11 menos o resultado anterior.
+	      if (resto < 2)
+	         digito1 = 0;
+	      else
+	         digito1 = 11 - resto;
+
+	      d2 += 2 * digito1;
+
+	      //Segundo resto da divisão por 11.
+	      resto = (d2 % 11);
+
+	      //Se o resultado for 0 ou 1 o digito é 0 caso contrário o digito é 11 menos o resultado anterior.
+	      if (resto < 2)
+	         digito2 = 0;
+	      else
+	         digito2 = 11 - resto;
+
+	      //Digito verificador do CPF que está sendo validado.
+	      String nDigVerific = strCpf.substring (strCpf.length()-2, strCpf.length());
+
+	      //Concatenando o primeiro resto com o segundo.
+	      nDigResult = String.valueOf(digito1) + String.valueOf(digito2);
+
+	      //comparar o digito verificador do cpf com o primeiro resto + o segundo resto.
+	      return nDigVerific.equals(nDigResult);
+	   }
+	
 	@Path("/usuarios")
 	@Post
 	public void adiciona(Usuario usuario){
 		
 		if (usuario.getNome() == null || usuario.getNome().length() < 3){
 			validator.add(new ValidationMessage(
-					"Nome Ã© obrigatÃ³rio e precisa ter mais de 3 letras",
+					"Nome é obrigatorio e precisa ter mais de 3 letras",
 					"usuario.nome"));
 		}
 		
 		if (usuario.getSobrenome() == null || usuario.getSobrenome().length() < 3){
 			validator.add(new ValidationMessage(
-					"Sobrenome Ã© obrigatÃ³rio e precisa ter mais de 3 letras",
+					"Sobrenome é obrigatorio e precisa ter mais de 3 letras",
 					"usuario.sobrenome"));
 		}
 		
 		if (dao.existeUsuario(usuario)) {
 			validator.add(new ValidationMessage(
-					"Login jÃ¡ existe",
+					"Login já existe",
 					"usuario.login"));
 		}
 		
-		if (usuario.getCpfCnpj() == null || usuario.getCpfCnpj().length() != 11){
+		if (usuario.getCpfCnpj() == null || usuario.getCpfCnpj().length() != 11 || isValidCpf(usuario.getCpfCnpj()) == false){
 			validator.add(new ValidationMessage(
-					"CPF/CNPJ Ã© obrigatÃ³rio e precisa ser vÃ¡lido",
+					"CPF/CNPJ é obrigatorio e precisa ser válido",
 					"usuario.cpfCnpj"));
 		}
 		
 		if (usuario.getTelefone() == null || usuario.getTelefone().length() < 10){
 			validator.add(new ValidationMessage(
-					"Telefone Ã© obrigatÃ³rio e ter no mÃ­nimo 8 caracteres 4499999999",
+					"Telefone é obrigatorio e ter no máximo 8 caracteres. Ex:4499999999",
 					"usuario.telefone"));
 		}
 		
 		if (usuario.getEndereco() == null || usuario.getEndereco().length() < 10){
 			validator.add(new ValidationMessage(
-					"EndereÃ§o Ã© obrigatÃ³rio e ter pelo menos 10 caracteres",
+					"Endereço é obrigatório e ter pelo menos 10 caracteres",
 					"usuario.endereco"));
 		}
 		
