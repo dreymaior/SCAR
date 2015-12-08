@@ -518,6 +518,7 @@ footer {
     			<tr>
     				<td>${sensor.nome}</td>
     				<td>${sensor.tipo}</td>
+    				
     				<td><a href="<c:url value="/sensores/${sensor.id}"/>">Editar</a></td>
     				<!-- <td><a href="remove?id=${sensor.id}">Remover</a></td>  -->
     				<td>
